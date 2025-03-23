@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  golang-api-login:
+    build: ./golang-api-login
+    container_name: golang-api-login
+    ports:
+      - "8081:8080"
+    environment:
+      DB_HOST: db_login
+      DB_USER: root
+      DB_PASSWORD: Manchestercityfc21!
+      DB_NAME: apigolang_jwt
+      DB_PORT: 3306
+      JWT_SECRET_KEY: super_secret_key
+      JWT_EXPIRATION_IN: 24h
+    depends_on:
+      - rabbitmq
+      - db_login
+    networks:
+      - app_network
+
+  product-management-api:
+    build: ./product-management-api
+    container_name: product-management-api
+    ports:
+      - "8082:8080"
+    environment:
+      DB_HOST: db_product
+      DB_USER: root
+      DB_PASSWORD: Manchestercityfc21!
+      DB_NAME: management_inventaris
+      DB_PORT: 3306
+    depends_on:
+      - rabbitmq
+      - db_product
+    networks:
+      - app_network
+
+  message-consumer:
+    build: ./message-consumer
+    container_name: message-consumer
+    depends_on:
+      - rabbitmq
+    networks:
+      - app_network
+
+  db_login:
+    image: mysql:latest
+    container_name: db_login
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Manchestercityfc21!
+      MYSQL_DATABASE: apigolang_jwt
+    ports:
+      - "3307:3306"
+    networks:
+      - app_network
+
+  db_product:
+    image: mysql:latest
+    container_name: db_product
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Manchestercityfc21!
+      MYSQL_DATABASE: management_inventaris
+    ports:
+      - "3308:3306"
+    networks:
+      - app_network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"   # RabbitMQ messaging
+      - "15672:15672" # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

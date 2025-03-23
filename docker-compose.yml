@@ -9,7 +9,7 @@ services:
     environment:
       DB_HOST: db_login
       DB_USER: root
-      DB_PASSWORD: Manchestercityfc21!
+      DB_PASSWORD: password!
       DB_NAME: apigolang_jwt
       DB_PORT: 3306
       JWT_SECRET_KEY: super_secret_key
@@ -28,7 +28,7 @@ services:
     environment:
       DB_HOST: db_product
       DB_USER: root
-      DB_PASSWORD: Manchestercityfc21!
+      DB_PASSWORD: password!
       DB_NAME: management_inventaris
       DB_PORT: 3306
     depends_on:
@@ -50,7 +50,7 @@ services:
     container_name: db_login
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Manchestercityfc21!
+      MYSQL_ROOT_PASSWORD: password!
       MYSQL_DATABASE: apigolang_jwt
     ports:
       - "3307:3306"
@@ -62,7 +62,7 @@ services:
     container_name: db_product
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Manchestercityfc21!
+      MYSQL_ROOT_PASSWORD: password!
       MYSQL_DATABASE: management_inventaris
     ports:
       - "3308:3306"

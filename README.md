@@ -34,7 +34,6 @@ Features
 ### 3. Message Consumer
 * Consume transaction, and login messages from RabbitMQ services
 
-# EndPoint Documentation
 # API Endpoints Documentation
 
 | Method     | API Endpoint               | Description                                      | Services             |
@@ -49,3 +48,13 @@ Features
 | **GET**    | `localhost:8082/orders/:id`              | Get details of a specific order by ID            | Product Management       |
 | **POST**   | `localhost:8082/upload`                  | Upload an Image of Product                              | Product Management       |
 | **GET**    | `localhost:8082/download`              | Download an Image of Product            | Product Management      |
+| **POST**   | `localhost:8081/api/auth/register`       | Register a new user                             | Login Management    |
+| **POST**   | `localhost:8081/api/auth/login`          | Authenticate user and return JWT token         | Login Management    |
+| **GET**    | `localhost:8081/api/users`               | Fetch list of users                            | Login Management        |
+| **POST**   | `localhost:8081/api/users`               | Create a new user                              | Login Management        |
+| **POST**   | `localhost:8081/api/users_without_db`    | Create a user without storing in database      | Login Management        |
+| **GET**    | `localhost:8081/api/users_without_db`    | Fetch users created without database storage   | Login Management        |
+| **POST**   | `localhost:8081/api/tags`                | Create a new tag                               | Login Management       |
+| **POST**   | `localhost:8081/api/posts`               | Create a new post                              | Login Management        |
+| **GET**    | `localhost:8081/api/posts`               | Fetch list of posts                            | Login Management       |
+| **GET**    | `localhost:8081/api/posts/{id}`          | Fetch a specific post by ID                    | Login Management      |

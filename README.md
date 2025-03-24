@@ -58,3 +58,32 @@ Features
 | **POST**   | `localhost:8081/api/posts`               | Create a new post                              | Login Management        |
 | **GET**    | `localhost:8081/api/posts`               | Fetch list of posts                            | Login Management       |
 | **GET**    | `localhost:8081/api/posts/{id}`          | Fetch a specific post by ID                    | Login Management      |
+
+# Getting Started
+
+This guide will help you set up and run the Golang API using Gin-Gonic, GORM, and MySQL.
+
+## Prerequisites
+
+Ensure you have the following installed:
+
+- [Golang](https://go.dev/dl/) (latest version)
+- [MySQL](https://dev.mysql.com/downloads/)
+- [Git](https://git-scm.com/)
+- Docker
+
+
+### 1. Install Dependencies
+Install the required packages:
+
+```sh
+go get -u github.com/gin-gonic/gin
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/mysql
+go get -u github.com/joho/godotenv
+```
+
+### 2.  Built Docker Image & Run on Docker Container
+```sh
+docker-compose up --build
+```
